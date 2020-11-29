@@ -10,6 +10,11 @@ def encode_rot13(s):
 def decode_rot13(s):
     return codecs.decode(s, 'rot13')
 
+def encode_binary(s):
+    return ''.join(format(ord(i), 'b') for i in s)
+def decode_binary(s):
+    return ''.join(format(i, 'b') for i in bytearray(s, encoding ='utf-8')) 
+
 def encode_base64(s):
     return base64.b64encode(s.encode("ascii")).decode("ascii") 
 
@@ -85,7 +90,7 @@ def encode_decode():
 
     st.subheader("Encoder")
     text1 = st.text_input("Enter the text you need to decode")
-    typ1 = st.selectbox('Encoding type',['ROT13','base64','hex','url',
+    typ1 = st.selectbox('Encoding type',['ROT13','base64','Binary','hex','url',
     'md5','sha1','sha256','sha512'])
     if text1 != "":
         if typ1 == 'ROT13':
@@ -104,6 +109,8 @@ def encode_decode():
             st.text_area("SHA512 Encoded",encode_sha512(text1))
         elif typ1 == 'hex':
             st.text_area("Hex Encoded",encode_hex(text1))
+        elif typ1 == 'Binary':
+            st.text_area("binary Encoded",encode_binary(text1))
 
     st.subheader("Decoder")
     text2 = st.text_area("Enter the text you need to decode")
