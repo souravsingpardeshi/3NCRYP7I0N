@@ -263,7 +263,7 @@ and has not yet been compromised in any way.
     st.write(
         '''
 ---
-***SHA-256***
+***SHA-512***
 
  SHA-512 is more difficult to implement in JavaScript than SHA-256, as it is based on 64-bit
  (unsigned) integers, which are not natively supported in JavaScript (in which all numbers are
